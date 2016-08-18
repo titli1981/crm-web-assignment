@@ -3,5 +3,6 @@
 # You'll have to implement it from scratch.
 require 'sinatra'
 get '/' do
-  'Main Menu'
+  @crm_app_name = "Bitmaker's CRM"
+  erb :index
 end
