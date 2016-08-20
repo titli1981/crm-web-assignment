@@ -3,6 +3,10 @@
 # You'll have to implement it from scratch.
 require_relative 'contact'
 require 'sinatra'
+
+# Temporary fake data so that we always find contact with id 1.
+Contact.create('Johnny', 'Bravo', 'johnny@bitmakerlabs.com', 'Rockstar')
+
 get '/' do
   @crm_app_name = "Bitmaker's CRM"
   erb :index
@@ -21,4 +25,8 @@ end
 post '/contacts'do
   Contact.create(params[:first_name], params[:last_name], params[:email], params[:note])
   redirect to('/contacts')
+end
+get '/contacts/:id' do
+  @contact = Contact.find(params[:id].to_i)
+  erb :show_contact
 end

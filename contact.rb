@@ -107,11 +107,11 @@ class Contact
   # Feel free to add other methods here, if you need them.
 
 end
-  Contact.create("Madhu","Mishra","madhu.mishra20@gmail.com", "awesome")
-  Contact.create("Arun", "Tiwari", "arun20@gmail.com", "cool")
-  Contact.create("Harsh", "Lamba", "harsh.lamba@gmail.com","hello")
-  Contact.all
-  contact = Contact.find(2)
-  puts contact.update(1,"Madhu")
-  puts contact.first_name
-  #puts Contact.find_by("first name","Madhu").first_name
+  # Contact.create("Madhu","Mishra","madhu.mishra20@gmail.com", "awesome")
+  # Contact.create("Arun", "Tiwari", "arun20@gmail.com", "cool")
+  # Contact.create("Harsh", "Lamba", "harsh.lamba@gmail.com","hello")
+  # Contact.all
+  # contact = Contact.find(2)
+  # puts contact.update(1,"Madhu")
+  # puts contact.first_name
+  # #puts Contact.find_by("first name","Madhu").first_name
