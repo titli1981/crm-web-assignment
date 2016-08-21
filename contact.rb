@@ -25,17 +25,11 @@ class Contact
   # def email=(email)                     #setter/writer
   #   @email = email
   # end
-  # def note                            #getter/reader
-  #   @note
-  # end
-  # def note=(note)                       #setter/writer
-  #   @note = note
-  # end
   # def first_name                          #getter
-  # @first_name
+  #   @first_name
   # end
   # def first_name=(first_name)             #getter
-  # @first_name = first_name
+  #   @first_name = first_name
   # end
   def self.create(first_name, last_name, email, note)
     new_contact = Contact.new(first_name, last_name, email, note)
@@ -52,12 +46,8 @@ class Contact
                                                      #puts "#{x.id}"
   # This method should accept an id as an argument
   # and return the contact who has that id
-  def self.find(id)
-    @@contacts.each do |contact|
-      if contact.id == id.to_i
-        return contact
-      end
-    end
+  def self.find(ids)
+     @@contacts.find { |contact| contact.id == ids}
   end
 
   # This method should allow you to specify
@@ -79,11 +69,10 @@ class Contact
   # by specifying both the name of the attribute and the value
   # eg. searching for 'first_name', 'Betty' should return the first contact named Betty
   def self.find_by(attribute,value)  # attribute = first name   value = "madhu"
-    @@contacts.each do |person|
-      return person if value == person.first_name
-      return person if value == person.last_name
-      return person if value == person.email
-      return person if value == person.note
+    @@contacts.each do |contact|
+      if contact.send(attribute) == value
+        return contact
+      end
     end
   end
 
@@ -100,8 +89,8 @@ class Contact
   # This method should delete the contact
   # HINT: Check the Array class docs for built-in methods that might be useful here
   def delete
-     #@@contact.delete_if { |contact| contact.id == self }
-      @@contacts.delete(self)
+     @@contact.delete_if { |contact| contact.id == self }
+      #@@contacts.delete(self)
   end
 
   # Feel free to add other methods here, if you need them.
