@@ -5,10 +5,10 @@ require_relative 'contact'
 require 'sinatra'
 
 # Temporary fake data so that we always find contact with id 1.
-  Contact.create('Johnny', 'Bravo', 'johnny@bitmakerlabs.com', 'Rockstar')
-  Contact.create("Madhu","Mishra","madhu.mishra20@gmail.com", "awesome")
-  Contact.create("Arun", "Tiwari", "arun20@gmail.com", "cool")
-  Contact.create("Harsh", "Lamba", "harsh.lamba@gmail.com","hello")
+   #Contact.create('Johnny', 'Bravo', 'johnny@bitmakerlabs.com', 'Rockstar')
+  # Contact.create("Madhu","Mishra","madhu.mishra20@gmail.com", "awesome")
+  # Contact.create("Arun", "Tiwari", "arun20@gmail.com", "cool")
+  # Contact.create("Harsh", "Lamba", "harsh.lamba@gmail.com","hello")
 
 get '/' do
   @crm_app_name = "Bitmaker's CRM"
@@ -56,6 +56,16 @@ put '/contacts/:id' do
     @contact.email = params[:email]
     @contact.note = params[:note]
 
+    redirect to('/contacts')
+  else
+    raise Sinatra::NotFound
+  end
+end
+
+delete '/contacts/:id' do
+  @contact = Contact.find(params[:id].to_i)
+  if @contact
+    @contact.delete
     redirect to('/contacts')
   else
     raise Sinatra::NotFound
